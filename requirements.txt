@@ -1,0 +1,4 @@
+pygame==2.5.2
+numpy==1.26.4
+python-chess>=1.999
+stockfish>=3.28.0
