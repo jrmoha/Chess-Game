@@ -1,7 +1,20 @@
+import sys
+import os
 import chess
 import chess.engine
 
-_STOCKFISH_PATHS = [
+# When running as a PyInstaller bundle, look for a bundled Stockfish first
+_bundle_dir = getattr(sys, "_MEIPASS", None)
+_bundled = (
+    [
+        os.path.join(_bundle_dir, "stockfish"),
+        os.path.join(_bundle_dir, "stockfish.exe"),
+    ]
+    if _bundle_dir
+    else []
+)
+
+_STOCKFISH_PATHS = _bundled + [
     "/opt/homebrew/bin/stockfish",  # macOS (Homebrew)
     "/usr/games/stockfish",         # Debian/Ubuntu
     "/usr/local/bin/stockfish",
