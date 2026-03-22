@@ -18,7 +18,6 @@ class Game:
         self.dragger = Drager()
         self.config = Config()
         self.mode = "pvp"
-        self.gameOver = False
 
     def show_bg(self, surface):
         theme = self.config.theme

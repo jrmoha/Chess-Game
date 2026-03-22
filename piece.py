@@ -5,13 +5,12 @@ class Piece:
     def __init__(self, name, color, value, texture=None, texture_rect=None):
         self.name = name
         self.color = color
-        value_sign = 1 if color == "white" else 1
-        self.value = value * value_sign
+        self.value = value
         self.moves = []
         self.moved = False
         self.texture = texture
-        self.set_texture()
         self.texture_rect = texture_rect
+        self.set_texture()
 
     def set_texture(self, size=80):
         self.texture = os.path.join(
@@ -27,10 +26,8 @@ class Piece:
 
 class Pawn(Piece):
     def __init__(self, color):
-        # As we can see in the board the white pieces is down so to make one step up it will take -1 else black +1
         self.dir = -1 if color == "white" else 1
         self.en_passant = False
-        # this value for the Ai training
         super().__init__("pawn", color, 1.0)
 
 

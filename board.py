@@ -1,5 +1,4 @@
 import copy
-import os
 
 from const import *
 from square import *
@@ -31,7 +30,7 @@ class Board:
                 self.squares[initial.row][initial.col + diff].piece = None
                 self.squares[final.row][final.col].piece = piece
                 if not testing:
-                    sound = Sound(os.path.join("assets/sounds/capture.wav"))
+                    sound = Sound("assets/sounds/capture.wav")
                     sound.play()
             else:
                 self.check_promotion(piece, final)
@@ -81,10 +80,6 @@ class Board:
         return move in piece.moves
 
     def calc_moves(self, piece, row, col, bool=True):
-        """
-        Calculate all valid moves for a piece at the given position.
-        """
-
         def pawn_moves():
             steps = 1 if piece.moved else 2
             start = row + piece.dir
